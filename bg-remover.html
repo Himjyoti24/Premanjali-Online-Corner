@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Background Remover - Premanjali Online Corner</title>
+
+<meta name="description"
+content="Remove photo backgrounds online for free with Premanjali Online Corner. Upload your photo and download a transparent PNG.">
+
+<style>
+:root{
+    --primary:#0b6e4f;
+    --primary-dark:#084b3f;
+    --secondary:#f7b801;
+    --bg:#07be91;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --border:#dfe7e5;
+    --shadow:0 14px 30px rgba(11,110,79,.12);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4faf8;
+    color:var(--text);
+    line-height:1.6;
+}
+
+/* TOP BAR */
+.topbar{
+    background:var(--primary-dark);
+    color:#fff;
+    padding:9px 0;
+    font-size:14px;
+}
+
+.container{
+    width:92%;
+    max-width:1150px;
+    margin:auto;
+}
+
+.topbar-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.topbar a{
+    color:#fff;
+    text-decoration:none;
+}
+
+/* HEADER */
+header{
+    background:#fff;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+    color:var(--primary);
+    text-decoration:none;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.menu a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+    padding:9px 12px;
+    border-radius:7px;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:var(--primary);
+    color:#fff;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(135deg,var(--primary),#0a8f68);
+    color:#fff;
+    text-align:center;
+    padding:55px 20px;
+}
+
+.hero h1{
+    font-size:clamp(30px,5vw,48px);
+    margin-bottom:10px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    font-size:17px;
+    opacity:.95;
+}
+
+/* TOOL */
+.tool-section{
+    padding:45px 0 65px;
+}
+
+.tool-card{
+    background:#fff;
+    max-width:850px;
+    margin:auto;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+}
+
+.upload-box{
+    border:2px dashed var(--primary);
+    border-radius:15px;
+    padding:45px 20px;
+    text-align:center;
+    background:#f8fffc;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.upload-box:hover{
+    background:#effcf7;
+    transform:translateY(-2px);
+}
+
+.upload-icon{
+    font-size:52px;
+    margin-bottom:10px;
+}
+
+.upload-box h2{
+    color:var(--primary);
+    margin-bottom:5px;
+}
+
+.upload-box p{
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:var(--secondary);
+    color:#222;
+    font-weight:700;
+    padding:12px 24px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#fileInput{
+    display:none;
+}
+
+/* STATUS */
+.status{
+    display:none;
+    text-align:center;
+    margin-top:25px;
+    padding:15px;
+    background:#effaf6;
+    border-radius:10px;
+    color:var(--primary-dark);
+    font-weight:600;
+}
+
+.loader{
+    width:35px;
+    height:35px;
+    border:4px solid #d8eee7;
+    border-top-color:var(--primary);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:0 auto 10px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* RESULTS */
+.results{
+    display:none;
+    margin-top:30px;
+}
+
+.results h2{
+    text-align:center;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.preview-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.preview{
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px;
+    background:#fff;
+}
+
+.preview h3{
+    margin-bottom:10px;
+    text-align:center;
+    color:var(--primary-dark);
+}
+
+.preview img{
+    display:block;
+    width:100%;
+    max-height:400px;
+    object-fit:contain;
+    border-radius:8px;
+    background:
+        linear-gradient(45deg,#eee 25%,transparent 25%),
+        linear-gradient(-45deg,#eee 25%,transparent 25%),
+        linear-gradient(45deg,transparent 75%,#eee 75%),
+        linear-gradient(-45deg,transparent 75%,#eee 75%);
+    background-size:20px 20px;
+    background-position:0 0,0 10px,10px -10px,-10px 0;
+}
+
+.action-buttons{
+    text-align:center;
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.download-btn{
+    background:var(--primary);
+    color:#fff;
+}
+
+.new-btn{
+    background:var(--secondary);
+    color:#222;
+}
+
+/* INFO */
+.info-section{
+    padding:0 0 60px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.info-card{
+    background:#fff;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.info-card .icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.info-card h3{
+    color:var(--primary);
+    margin-bottom:7px;
+}
+
+/* FOOTER */
+footer{
+    background:var(--primary-dark);
+    color:#fff;
+    padding:35px 0 20px;
+    margin-top:20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+footer h3{
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#d7eee7;
+}
+
+footer a{
+    color:#fff;
+    text-decoration:none;
+    display:block;
+    margin:5px 0;
+}
+
+.copyright{
+    border-top:1px solid rgba(255,255,255,.15);
+    margin-top:25px;
+    padding-top:15px;
+    text-align:center;
+    font-size:14px;
+    color:#cce5df;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+    .nav{
+        flex-direction:column;
+        padding:14px 0;
+    }
+
+    .menu{
+        justify-content:center;
+    }
+
+    .menu a{
+        font-size:14px;
+        padding:7px 9px;
+    }
+
+    .preview-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+    .topbar-content{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .tool-card{
+        padding:18px;
+    }
+
+    .upload-box{
+        padding:30px 12px;
+    }
+
+    .hero{
+        padding:40px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container topbar-content">
+        <div>
+            📞 Call us: +91 6001246406
+            &nbsp; | &nbsp;
+            📧 support@premanjalionlinecorner.in
+        </div>
+
+        <div>
+            <a href="#">Facebook</a>
+            &nbsp; | &nbsp;
+            <a href="#">WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<header>
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            Premanjali <span>Online Corner</span>
+        </a>
+
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="notice.html">Notice</a>
+            <a href="content.html">Content</a>
+            <a href="bg-remover.html" class="active">BG Remover</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>🪄 Photo Background Remover</h1>
+        <p>
+            Remove the background from your photo online and download
+            a clean transparent PNG.
+        </p>
+    </div>
+</section>
+
+<!-- TOOL -->
+<section class="tool-section">
+    <div class="container">
+
+        <div class="tool-card">
+
+            <label class="upload-box" for="fileInput">
+
+                <div class="upload-icon">📷</div>
+
+                <h2>Upload Your Photo</h2>
+
+                <p>
+                    Select JPG, JPEG or PNG image from your device
+                </p>
+
+                <span class="upload-btn">
+                    Choose Photo
+                </span>
+
+            </label>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/png,image/jpeg,image/jpg"
+            >
+
+            <!-- STATUS -->
+            <div class="status" id="status">
+                <div class="loader"></div>
+                <div id="statusText">
+                    Removing background... Please wait.
+                </div>
+            </div>
+
+            <!-- RESULT -->
+            <div class="results" id="results">
+
+                <h2>✨ Your Result</h2>
+
+                <div class="preview-grid">
+
+                    <div class="preview">
+                        <h3>Original Photo</h3>
+                        <img id="originalImage" alt="Original photo">
+                    </div>
+
+                    <div class="preview">
+                        <h3>Background Removed</h3>
+                        <img id="resultImage" alt="Background removed photo">
+                    </div>
+
+                </div>
+
+                <div class="action-buttons">
+
+                    <a
+                        id="downloadBtn"
+                        class="btn download-btn"
+                        download="premanjali-bg-removed.png"
+                    >
+                        ⬇️ Download PNG
+                    </a>
+
+                    <button
+                        class="btn new-btn"
+                        onclick="resetTool()"
+                    >
+                        🔄 Remove Another
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- INFORMATION -->
+<section class="info-section">
+    <div class="container">
+
+        <div class="info-grid">
+
+            <div class="info-card">
+                <div class="icon">⚡</div>
+                <h3>Easy to Use</h3>
+                <p>
+                    Upload your photo and let the tool automatically
+                    remove the background.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">🖼️</div>
+                <h3>Transparent PNG</h3>
+                <p>
+                    Download your finished photo as a transparent PNG
+                    image.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">🔒</div>
+                <h3>Privacy Friendly</h3>
+                <p>
+                    Image processing is performed in your browser
+                    whenever supported by the tool.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Premanjali Online Corner</h3>
+                <p>
+                    Online services, digital assistance, printing,
+                    government applications and useful online tools.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="notice.html">Notice</a>
+                <a href="content.html">Content</a>
+            </div>
+
+            <div>
+                <h3>Useful Pages</h3>
+                <a href="bg-remover.html">BG Remover</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Premanjali Online Corner. All Rights Reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- BACKGROUND REMOVAL LIBRARY -->
+<script type="module">
+
+import { removeBackground } from
+"https://cdn.jsdelivr.net/npm/@imgly/background-removal/+esm";
+
+const fileInput = document.getElementById("fileInput");
+const status = document.getElementById("status");
+const statusText = document.getElementById("statusText");
+const results = document.getElementById("results");
+
+const originalImage = document.getElementById("originalImage");
+const resultImage = document.getElementById("resultImage");
+const downloadBtn = document.getElementById("downloadBtn");
+
+let resultURL = null;
+
+fileInput.addEventListener("change", async function(){
+
+    const file = this.files[0];
+
+    if(!file){
+        return;
+    }
+
+    if(!file.type.startsWith("image/")){
+        alert("Please select a valid image.");
+        return;
+    }
+
+    const originalURL = URL.createObjectURL(file);
+
+    originalImage.src = originalURL;
+
+    results.style.display = "none";
+    status.style.display = "block";
+
+    statusText.textContent =
+        "Loading background removal model... Please wait.";
+
+    try{
+
+        statusText.textContent =
+            "Removing background... This may take a little time.";
+
+        const blob = await removeBackground(file);
+
+        if(resultURL){
+            URL.revokeObjectURL(resultURL);
+        }
+
+        resultURL = URL.createObjectURL(blob);
+
+        resultImage.src = resultURL;
+
+        downloadBtn.href = resultURL;
+
+        results.style.display = "block";
+        status.style.display = "none";
+
+    }catch(error){
+
+        console.error(error);
+
+        status.style.display = "none";
+
+        alert(
+            "Background removal failed. Please try another image or check your internet connection."
+        );
+
+    }
+
+});
+
+window.resetTool = function(){
+
+    if(resultURL){
+        URL.revokeObjectURL(resultURL);
+        resultURL = null;
+    }
+
+    fileInput.value = "";
+
+    originalImage.src = "";
+    resultImage.src = "";
+
+    results.style.display = "none";
+    status.style.display = "none";
+
+    window.scrollTo({
+        top:300,
+        behavior:"smooth"
+    });
+};
+
+</script>
+
+</body>
+</html>
