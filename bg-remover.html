@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fast Background Remover - Premanjali Online Corner</title>
+<title>Photo BG Remover & Background Changer - Premanjali Online Corner</title>
 
 <meta name="description"
-content="Fast online photo background remover by Premanjali Online Corner. Remove image backgrounds and download transparent PNG files.">
+content="Remove photo backgrounds and customize the background color online with Premanjali Online Corner.">
 
 <style>
 :root{
@@ -15,7 +15,7 @@ content="Fast online photo background remover by Premanjali Online Corner. Remov
     --primary-dark:#084b3f;
     --secondary:#f7b801;
     --bg:#07be91;
-    --card:#fff;
+    --card:#ffffff;
     --text:#1f2937;
     --muted:#6b7280;
     --border:#dfe7e5;
@@ -42,6 +42,7 @@ body{
 }
 
 /* TOP BAR */
+
 .topbar{
     background:var(--primary-dark);
     color:#fff;
@@ -62,7 +63,8 @@ body{
     text-decoration:none;
 }
 
-/* HEADER */
+/* NAVIGATION */
+
 header{
     background:#fff;
     box-shadow:0 3px 12px rgba(0,0,0,.08);
@@ -98,8 +100,8 @@ header{
 }
 
 .menu a{
-    text-decoration:none;
     color:var(--text);
+    text-decoration:none;
     font-weight:600;
     padding:9px 11px;
     border-radius:7px;
@@ -112,31 +114,33 @@ header{
 }
 
 /* HERO */
+
 .hero{
     background:linear-gradient(135deg,var(--primary),#0a9169);
-    color:white;
+    color:#fff;
     text-align:center;
     padding:48px 20px;
 }
 
 .hero h1{
-    font-size:clamp(30px,5vw,46px);
+    font-size:clamp(29px,5vw,46px);
     margin-bottom:8px;
 }
 
 .hero p{
-    max-width:700px;
+    max-width:750px;
     margin:auto;
     font-size:17px;
 }
 
-/* TOOL */
+/* MAIN */
+
 .tool-section{
     padding:40px 0 60px;
 }
 
 .tool-card{
-    max-width:850px;
+    max-width:950px;
     margin:auto;
     background:#fff;
     padding:28px;
@@ -146,19 +150,15 @@ header{
 }
 
 /* UPLOAD */
+
 .upload-box{
     display:block;
     border:2px dashed var(--primary);
     border-radius:15px;
-    padding:42px 20px;
+    padding:40px 20px;
     text-align:center;
     background:#f8fffc;
     cursor:pointer;
-    transition:.2s;
-}
-
-.upload-box:hover{
-    background:#effcf7;
 }
 
 .upload-icon{
@@ -189,13 +189,14 @@ header{
 }
 
 /* STATUS */
+
 .status{
     display:none;
     margin-top:25px;
+    padding:20px;
     text-align:center;
     background:#f0faf7;
     border-radius:12px;
-    padding:20px;
 }
 
 .loader{
@@ -222,10 +223,8 @@ header{
 .status-small{
     color:var(--muted);
     font-size:14px;
-    margin-top:4px;
 }
 
-/* PROGRESS */
 .progress-wrap{
     width:100%;
     height:9px;
@@ -236,62 +235,143 @@ header{
 }
 
 .progress-bar{
-    width:0%;
+    width:0;
     height:100%;
     background:var(--primary);
-    transition:width .3s ease;
+    transition:width .3s;
 }
 
-/* RESULTS */
-.results{
+/* EDITOR */
+
+.editor{
     display:none;
     margin-top:30px;
 }
 
-.results h2{
+.editor-title{
     text-align:center;
     color:var(--primary);
     margin-bottom:20px;
 }
 
-.preview-grid{
+.editor-layout{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:280px 1fr;
+    gap:25px;
 }
 
-.preview{
+/* CONTROLS */
+
+.controls{
+    background:#f8fffc;
     border:1px solid var(--border);
-    padding:12px;
-    border-radius:12px;
+    border-radius:14px;
+    padding:20px;
 }
 
-.preview h3{
+.control-title{
+    font-weight:bold;
+    color:var(--primary-dark);
+    margin-bottom:12px;
+}
+
+.control-group{
+    margin-bottom:22px;
+}
+
+.control-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+/* COLOR */
+
+.color-picker{
+    width:100%;
+    height:48px;
+    border:none;
+    padding:0;
+    cursor:pointer;
+}
+
+.hex{
+    width:100%;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    margin-top:8px;
+    text-transform:uppercase;
+}
+
+/* PRESETS */
+
+.presets{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.color-btn{
+    height:35px;
+    border-radius:7px;
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px #ccc;
+    cursor:pointer;
+}
+
+.transparent-btn{
+    background:
+    linear-gradient(45deg,#ddd 25%,transparent 25%),
+    linear-gradient(-45deg,#ddd 25%,transparent 25%),
+    linear-gradient(45deg,transparent 75%,#ddd 75%),
+    linear-gradient(-45deg,transparent 75%,#ddd 75%);
+    background-size:12px 12px;
+    background-position:0 0,0 6px,6px -6px,-6px 0;
+}
+
+/* FORMAT */
+
+.format-select{
+    width:100%;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    background:#fff;
+}
+
+/* PREVIEW */
+
+.preview-area{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:15px;
+    background:#eee;
+}
+
+.preview-heading{
     text-align:center;
     color:var(--primary-dark);
     margin-bottom:10px;
 }
 
-.preview img{
+.canvas-wrapper{
     width:100%;
-    max-height:400px;
-    object-fit:contain;
-    display:block;
-    border-radius:8px;
-
-    background:
-    linear-gradient(45deg,#eee 25%,transparent 25%),
-    linear-gradient(-45deg,#eee 25%,transparent 25%),
-    linear-gradient(45deg,transparent 75%,#eee 75%),
-    linear-gradient(-45deg,transparent 75%,#eee 75%);
-
-    background-size:20px 20px;
-    background-position:
-    0 0,
-    0 10px,
-    10px -10px,
-    -10px 0;
+    min-height:400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    border-radius:10px;
 }
+
+#canvas{
+    max-width:100%;
+    max-height:600px;
+    display:block;
+}
+
+/* BUTTONS */
 
 .buttons{
     display:flex;
@@ -307,7 +387,6 @@ header{
     border-radius:8px;
     font-weight:bold;
     cursor:pointer;
-    text-decoration:none;
     font-size:15px;
 }
 
@@ -321,7 +400,8 @@ header{
     color:#222;
 }
 
-/* INFO */
+/* FEATURES */
+
 .info-section{
     padding-bottom:60px;
 }
@@ -350,6 +430,7 @@ header{
 }
 
 /* FOOTER */
+
 footer{
     background:var(--primary-dark);
     color:#fff;
@@ -387,19 +468,20 @@ footer a{
 }
 
 /* MOBILE */
-@media(max-width:800px){
+
+@media(max-width:850px){
 
     .nav{
         flex-direction:column;
         padding:14px 0;
     }
 
-    .menu{
-        justify-content:center;
+    .editor-layout{
+        grid-template-columns:1fr;
     }
 
-    .preview-grid{
-        grid-template-columns:1fr;
+    .preview-area{
+        order:-1;
     }
 
     .info-grid{
@@ -436,63 +518,57 @@ footer a{
 <body>
 
 <!-- TOP BAR -->
+
 <div class="topbar">
-    <div class="container topbar-content">
 
-        <div>
-            📞 Call us: +91 6001246406
-            &nbsp; | &nbsp;
-            📧 support@premanjalionlinecorner.in
-        </div>
+<div class="container topbar-content">
 
-        <div>
-            <a href="#">Facebook</a>
-            &nbsp; | &nbsp;
-            <a href="#">WhatsApp</a>
-        </div>
+<div>
+📞 Call us: +91 6001246406
+&nbsp; | &nbsp;
+📧 support@premanjalionlinecorner.in
+</div>
 
-    </div>
+<div>
+<a href="#">Facebook</a>
+&nbsp; | &nbsp;
+<a href="#">WhatsApp</a>
+</div>
+
+</div>
+
 </div>
 
 
 <!-- NAVIGATION -->
+
 <header>
 
 <div class="container nav">
 
-    <a href="index.html" class="logo">
-        Premanjali <span>Online Corner</span>
-    </a>
+<a href="index.html" class="logo">
+Premanjali <span>Online Corner</span>
+</a>
 
-    <nav class="menu">
+<nav class="menu">
 
-        <a href="index.html">Home</a>
+<a href="index.html">Home</a>
 
-        <a href="services.html">
-            Services
-        </a>
+<a href="services.html">Services</a>
 
-        <a href="notice.html">
-            Notice
-        </a>
+<a href="notice.html">Notice</a>
 
-        <a href="content.html">
-            Content
-        </a>
+<a href="content.html">Content</a>
 
-        <a href="bg-remover.html" class="active">
-            BG Remover
-        </a>
+<a href="bg-remover.html" class="active">
+BG Remover
+</a>
 
-        <a href="about.html">
-            About
-        </a>
+<a href="about.html">About</a>
 
-        <a href="contact.html">
-            Contact
-        </a>
+<a href="contact.html">Contact</a>
 
-    </nav>
+</nav>
 
 </div>
 
@@ -500,18 +576,19 @@ footer a{
 
 
 <!-- HERO -->
+
 <section class="hero">
 
 <div class="container">
 
-    <h1>
-        🪄 Fast Photo Background Remover
-    </h1>
+<h1>
+🪄 BG Remover & Background Changer
+</h1>
 
-    <p>
-        Upload your photo, remove the background and download
-        your transparent PNG.
-    </p>
+<p>
+Remove your photo background and customize it with
+your favorite color.
+</p>
 
 </div>
 
@@ -519,127 +596,281 @@ footer a{
 
 
 <!-- TOOL -->
+
 <section class="tool-section">
 
 <div class="container">
 
 <div class="tool-card">
 
-    <!-- UPLOAD -->
 
-    <label class="upload-box" for="fileInput">
+<!-- UPLOAD -->
 
-        <div class="upload-icon">
-            📷
-        </div>
+<label class="upload-box" for="fileInput">
 
-        <h2>
-            Upload Your Photo
-        </h2>
+<div class="upload-icon">
+📷
+</div>
 
-        <p>
-            JPG, JPEG or PNG • Large photos are automatically optimized
-        </p>
+<h2>
+Upload Your Photo
+</h2>
 
-        <span class="upload-btn">
-            Choose Photo
-        </span>
+<p>
+JPG, JPEG or PNG • Maximum 15 MB
+</p>
 
-    </label>
+<span class="upload-btn">
+Choose Photo
+</span>
 
-    <input
-        type="file"
-        id="fileInput"
-        accept="image/jpeg,image/png,image/jpg"
-    >
+</label>
 
-
-    <!-- STATUS -->
-
-    <div class="status" id="status">
-
-        <div class="loader"></div>
-
-        <div class="status-title" id="statusTitle">
-            Preparing image...
-        </div>
-
-        <div class="status-small" id="statusSmall">
-            Please wait.
-        </div>
-
-        <div class="progress-wrap">
-
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
-
-        </div>
-
-    </div>
+<input
+type="file"
+id="fileInput"
+accept="image/jpeg,image/png,image/jpg"
+>
 
 
-    <!-- RESULT -->
+<!-- STATUS -->
 
-    <div class="results" id="results">
+<div class="status" id="status">
 
-        <h2>
-            ✨ Background Removed
-        </h2>
+<div class="loader"></div>
 
-        <div class="preview-grid">
+<div class="status-title" id="statusTitle">
+Preparing...
+</div>
 
-            <div class="preview">
+<div class="status-small" id="statusSmall">
+Please wait.
+</div>
 
-                <h3>
-                    Original
-                </h3>
+<div class="progress-wrap">
 
-                <img
-                    id="originalImage"
-                    alt="Original photo"
-                >
+<div
+class="progress-bar"
+id="progressBar">
+</div>
 
-            </div>
+</div>
 
-
-            <div class="preview">
-
-                <h3>
-                    Result
-                </h3>
-
-                <img
-                    id="resultImage"
-                    alt="Background removed photo"
-                >
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="buttons">
+<!-- EDITOR -->
 
-            <a
-                id="downloadBtn"
-                class="btn download"
-                download="premanjali-background-removed.png"
-            >
-                ⬇️ Download PNG
-            </a>
+<div class="editor" id="editor">
 
-            <button
-                class="btn new-photo"
-                id="newPhotoBtn"
-            >
-                🔄 New Photo
-            </button>
+<h2 class="editor-title">
+🎨 Customize Background
+</h2>
 
-        </div>
 
-    </div>
+<div class="editor-layout">
+
+
+<!-- CONTROLS -->
+
+<div class="controls">
+
+
+<div class="control-group">
+
+<div class="control-title">
+Background Color
+</div>
+
+<input
+type="color"
+id="colorPicker"
+class="color-picker"
+value="#ffffff"
+>
+
+<input
+type="text"
+id="hexInput"
+class="hex"
+value="#FFFFFF"
+maxlength="7"
+>
+
+</div>
+
+
+<div class="control-group">
+
+<label>
+Quick Colors
+</label>
+
+<div class="presets">
+
+<button
+class="color-btn"
+style="background:#ffffff"
+data-color="#ffffff">
+</button>
+
+<button
+class="color-btn"
+style="background:#000000"
+data-color="#000000">
+</button>
+
+<button
+class="color-btn"
+style="background:#0b6e4f"
+data-color="#0b6e4f">
+</button>
+
+<button
+class="color-btn"
+style="background:#f7b801"
+data-color="#f7b801">
+</button>
+
+<button
+class="color-btn"
+style="background:#2196f3"
+data-color="#2196f3">
+</button>
+
+<button
+class="color-btn"
+style="background:#e91e63"
+data-color="#e91e63">
+</button>
+
+<button
+class="color-btn"
+style="background:#9c27b0"
+data-color="#9c27b0">
+</button>
+
+<button
+class="color-btn"
+style="background:#ff5722"
+data-color="#ff5722">
+</button>
+
+<button
+class="color-btn"
+style="background:#795548"
+data-color="#795548">
+</button>
+
+<button
+class="color-btn"
+style="background:#607d8b"
+data-color="#607d8b">
+</button>
+
+<button
+class="color-btn"
+style="background:#00bcd4"
+data-color="#00bcd4">
+</button>
+
+<button
+class="color-btn transparent-btn"
+data-color="transparent"
+title="Transparent">
+</button>
+
+</div>
+
+</div>
+
+
+<div class="control-group">
+
+<label>
+Download Format
+</label>
+
+<select
+id="formatSelect"
+class="format-select">
+
+<option value="png">
+PNG - Transparent/High Quality
+</option>
+
+<option value="jpeg">
+JPG - Smaller File Size
+</option>
+
+</select>
+
+</div>
+
+
+<div class="control-group">
+
+<label>
+Photo Quality
+</label>
+
+<input
+type="range"
+id="qualitySlider"
+min="60"
+max="100"
+value="92"
+style="width:100%;"
+>
+
+<div style="text-align:center;">
+<span id="qualityValue">92%</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<div class="preview-area">
+
+<div class="preview-heading">
+Live Preview
+</div>
+
+<div class="canvas-wrapper">
+
+<canvas id="canvas"></canvas>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<button
+class="btn download"
+id="downloadBtn">
+⬇️ Download Photo
+</button>
+
+<button
+class="btn new-photo"
+id="newPhotoBtn">
+🔄 New Photo
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -656,58 +887,58 @@ footer a{
 
 <div class="info-grid">
 
-    <div class="info-card">
+<div class="info-card">
 
-        <div class="info-icon">
-            ⚡
-        </div>
+<div class="info-icon">
+⚡
+</div>
 
-        <h3>
-            Optimized
-        </h3>
+<h3>
+Fast Processing
+</h3>
 
-        <p>
-            Large photos are resized before processing
-            to reduce processing time.
-        </p>
+<p>
+Large photos are automatically optimized
+before background removal.
+</p>
 
-    </div>
-
-
-    <div class="info-card">
-
-        <div class="info-icon">
-            🖼️
-        </div>
-
-        <h3>
-            Transparent PNG
-        </h3>
-
-        <p>
-            Download the finished image with a transparent
-            background.
-        </p>
-
-    </div>
+</div>
 
 
-    <div class="info-card">
+<div class="info-card">
 
-        <div class="info-icon">
-            🔒
-        </div>
+<div class="info-icon">
+🎨
+</div>
 
-        <h3>
-            Privacy Friendly
-        </h3>
+<h3>
+Customize Background
+</h3>
 
-        <p>
-            The image processing happens in your browser
-            after the required model is loaded.
-        </p>
+<p>
+Choose white, black, green, blue, yellow,
+custom colors or transparent background.
+</p>
 
-    </div>
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+📥
+</div>
+
+<h3>
+Easy Download
+</h3>
+
+<p>
+Download your finished photo as PNG
+or JPG.
+</p>
+
+</div>
 
 </div>
 
@@ -724,76 +955,54 @@ footer a{
 
 <div class="footer-grid">
 
-    <div>
+<div>
 
-        <h3>
-            Premanjali Online Corner
-        </h3>
+<h3>
+Premanjali Online Corner
+</h3>
 
-        <p>
-            Online services, digital assistance, printing,
-            government applications and useful online tools.
-        </p>
+<p>
+Online services, digital assistance, printing,
+government applications and useful online tools.
+</p>
 
-    </div>
-
-
-    <div>
-
-        <h3>
-            Quick Links
-        </h3>
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="services.html">
-            Services
-        </a>
-
-        <a href="notice.html">
-            Notice
-        </a>
-
-        <a href="content.html">
-            Content
-        </a>
-
-    </div>
+</div>
 
 
-    <div>
+<div>
 
-        <h3>
-            Useful Pages
-        </h3>
+<h3>
+Quick Links
+</h3>
 
-        <a href="bg-remover.html">
-            BG Remover
-        </a>
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+<a href="notice.html">Notice</a>
+<a href="content.html">Content</a>
 
-        <a href="about.html">
-            About
-        </a>
+</div>
 
-        <a href="contact.html">
-            Contact
-        </a>
 
-        <a href="privacy.html">
-            Privacy Policy
-        </a>
+<div>
 
-    </div>
+<h3>
+Useful Pages
+</h3>
+
+<a href="bg-remover.html">BG Remover</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy Policy</a>
+
+</div>
 
 </div>
 
 
 <div class="copyright">
 
-    © 2026 Premanjali Online Corner.
-    All Rights Reserved.
+© 2026 Premanjali Online Corner.
+All Rights Reserved.
 
 </div>
 
@@ -802,7 +1011,7 @@ footer a{
 </footer>
 
 
-<!-- FAST BACKGROUND REMOVER -->
+<!-- BACKGROUND REMOVAL -->
 
 <script type="module">
 
@@ -812,42 +1021,59 @@ import {
 
 
 const fileInput =
-    document.getElementById("fileInput");
+document.getElementById("fileInput");
 
 const status =
-    document.getElementById("status");
+document.getElementById("status");
 
 const statusTitle =
-    document.getElementById("statusTitle");
+document.getElementById("statusTitle");
 
 const statusSmall =
-    document.getElementById("statusSmall");
+document.getElementById("statusSmall");
 
 const progressBar =
-    document.getElementById("progressBar");
+document.getElementById("progressBar");
 
-const results =
-    document.getElementById("results");
+const editor =
+document.getElementById("editor");
 
-const originalImage =
-    document.getElementById("originalImage");
+const colorPicker =
+document.getElementById("colorPicker");
 
-const resultImage =
-    document.getElementById("resultImage");
+const hexInput =
+document.getElementById("hexInput");
+
+const canvas =
+document.getElementById("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+const formatSelect =
+document.getElementById("formatSelect");
+
+const qualitySlider =
+document.getElementById("qualitySlider");
+
+const qualityValue =
+document.getElementById("qualityValue");
 
 const downloadBtn =
-    document.getElementById("downloadBtn");
+document.getElementById("downloadBtn");
 
 const newPhotoBtn =
-    document.getElementById("newPhotoBtn");
+document.getElementById("newPhotoBtn");
 
 
-let resultURL = null;
-let originalURL = null;
+let transparentImage = null;
+
+let originalWidth = 0;
+let originalHeight = 0;
 
 
 /* --------------------------------
-   RESIZE IMAGE
+   IMAGE RESIZE
 -------------------------------- */
 
 async function optimizeImage(file){
@@ -855,13 +1081,13 @@ async function optimizeImage(file){
     const MAX_SIZE = 1600;
 
     const bitmap =
-        await createImageBitmap(file);
+    await createImageBitmap(file);
 
     let width =
-        bitmap.width;
+    bitmap.width;
 
     let height =
-        bitmap.height;
+    bitmap.height;
 
 
     if(
@@ -875,36 +1101,33 @@ async function optimizeImage(file){
 
 
     const ratio =
-        Math.min(
-            MAX_SIZE / width,
-            MAX_SIZE / height
-        );
+    Math.min(
+        MAX_SIZE / width,
+        MAX_SIZE / height
+    );
 
 
     width =
-        Math.round(width * ratio);
+    Math.round(width * ratio);
 
     height =
-        Math.round(height * ratio);
+    Math.round(height * ratio);
 
 
-    const canvas =
-        document.createElement("canvas");
+    const temp =
+    document.createElement("canvas");
 
-    canvas.width =
-        width;
+    temp.width =
+    width;
 
-    canvas.height =
-        height;
-
-
-    const ctx =
-        canvas.getContext("2d", {
-            alpha:true
-        });
+    temp.height =
+    height;
 
 
-    ctx.drawImage(
+    const tempCtx =
+    temp.getContext("2d");
+
+    tempCtx.drawImage(
         bitmap,
         0,
         0,
@@ -916,24 +1139,23 @@ async function optimizeImage(file){
     return new Promise(
         resolve => {
 
-            canvas.toBlob(
+            temp.toBlob(
                 blob => {
 
                     resolve(
                         new File(
                             [blob],
-                            "optimized-image.jpg",
+                            "optimized.jpg",
                             {
-                                type:"image/jpeg",
-                                lastModified:
-                                    Date.now()
+                                type:
+                                "image/jpeg"
                             }
                         )
                     );
 
                 },
                 "image/jpeg",
-                0.88
+                .88
             );
 
         }
@@ -943,231 +1165,478 @@ async function optimizeImage(file){
 
 
 /* --------------------------------
-   FILE UPLOAD
+   UPLOAD
 -------------------------------- */
 
 fileInput.addEventListener(
-    "change",
-    async function(){
+"change",
+async function(){
 
-        const file =
-            this.files[0];
+const file =
+this.files[0];
 
-        if(!file){
-            return;
-        }
+if(!file){
+return;
+}
 
 
-        if(!file.type.startsWith("image/")){
+if(
+!file.type.startsWith("image/")
+){
 
-            alert(
-                "Please select a valid JPG or PNG image."
-            );
+alert(
+"Please select a valid image."
+);
 
-            return;
+return;
 
-        }
+}
 
 
-        /* Maximum upload size */
+if(
+file.size >
+15 * 1024 * 1024
+){
 
-        if(file.size > 15 * 1024 * 1024){
+alert(
+"Please select an image smaller than 15 MB."
+);
 
-            alert(
-                "Please select an image smaller than 15 MB."
-            );
+fileInput.value="";
 
-            fileInput.value = "";
+return;
 
-            return;
+}
 
-        }
 
+try{
 
-        try{
+status.style.display =
+"block";
 
-            startLoading();
+editor.style.display =
+"none";
 
 
-            /* Show original */
+setProgress(
+10,
+"Optimizing photo...",
+"Preparing your image."
+);
 
-            if(originalURL){
 
-                URL.revokeObjectURL(
-                    originalURL
-                );
+const optimized =
+await optimizeImage(file);
 
-            }
 
-            originalURL =
-                URL.createObjectURL(file);
+setProgress(
+25,
+"Starting AI...",
+"Removing the background."
+);
 
-            originalImage.src =
-                originalURL;
 
+transparentImage =
+await removeBackground(
+optimized,
+{
 
-            setProgress(
-                10,
-                "Optimizing image...",
-                "Large photos are automatically resized."
-            );
+progress:
+(key,current,total)=>{
 
+if(total > 0){
 
-            /* Resize */
+const p =
+25 +
+Math.round(
+(current / total) * 70
+);
 
-            const optimizedFile =
-                await optimizeImage(file);
+setProgress(
+p,
+"Removing background...",
+"AI processing: "+p+"%"
+);
 
+}
 
-            setProgress(
-                25,
-                "Starting AI background removal...",
-                "The first run may take longer."
-            );
+}
 
+}
+);
 
-            /* Background removal */
 
-            const blob =
-                await removeBackground(
-                    optimizedFile,
-                    {
+setProgress(
+100,
+"Completed!",
+"Background removed successfully."
+);
 
-                        progress:
-                        (key,current,total) => {
 
-                            if(total > 0){
+const image =
+new Image();
 
-                                const aiProgress =
-                                    current / total;
+image.onload =
+function(){
 
-                                const percent =
-                                    25 +
-                                    Math.round(
-                                        aiProgress * 70
-                                    );
+originalWidth =
+image.naturalWidth;
 
-                                setProgress(
-                                    percent,
-                                    "Removing background...",
-                                    "AI processing: " +
-                                    percent +
-                                    "%"
-                                );
+originalHeight =
+image.naturalHeight;
 
-                            }
+canvas.width =
+originalWidth;
 
-                        }
+canvas.height =
+originalHeight;
 
-                    }
-                );
 
+editor.style.display =
+"block";
 
-            /* Result */
+status.style.display =
+"none";
 
-            if(resultURL){
 
-                URL.revokeObjectURL(
-                    resultURL
-                );
+drawPreview();
 
-            }
+editor.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
+};
 
-            resultURL =
-                URL.createObjectURL(blob);
+image.src =
+URL.createObjectURL(
+transparentImage
+);
 
 
-            resultImage.src =
-                resultURL;
+}
+catch(error){
 
+console.error(error);
 
-            downloadBtn.href =
-                resultURL;
+status.style.display =
+"none";
 
+alert(
+"Background removal failed. Please try another image."
+);
 
-            setProgress(
-                100,
-                "Completed!",
-                "Your background has been removed."
-            );
+}
 
+});
 
-            setTimeout(
-                () => {
 
-                    status.style.display =
-                        "none";
+/* --------------------------------
+   PROGRESS
+-------------------------------- */
 
-                    results.style.display =
-                        "block";
+function setProgress(
+percent,
+title,
+small
+){
 
-                    results.scrollIntoView({
-                        behavior:"smooth",
-                        block:"start"
-                    });
+progressBar.style.width =
+percent+"%";
 
-                },
-                500
-            );
+statusTitle.textContent =
+title;
 
+statusSmall.textContent =
+small;
 
-        }catch(error){
+}
 
-            console.error(
-                "Background removal error:",
-                error
-            );
 
+/* --------------------------------
+   SET COLOR
+-------------------------------- */
 
-            status.style.display =
-                "none";
+function setColor(color){
 
+if(color === "transparent"){
 
-            alert(
-                "Background removal failed. Please try again with another photo."
-            );
+colorPicker.value =
+"#ffffff";
 
-        }
+hexInput.value =
+"TRANSPARENT";
 
-    }
+}else{
+
+colorPicker.value =
+color;
+
+hexInput.value =
+color.toUpperCase();
+
+}
+
+drawPreview();
+
+}
+
+
+/* --------------------------------
+   COLOR PICKER
+-------------------------------- */
+
+colorPicker.addEventListener(
+"input",
+function(){
+
+hexInput.value =
+this.value.toUpperCase();
+
+drawPreview();
+
+}
 );
 
 
 /* --------------------------------
-   LOADING UI
+   HEX INPUT
 -------------------------------- */
 
-function startLoading(){
+hexInput.addEventListener(
+"input",
+function(){
 
-    results.style.display =
-        "none";
-
-    status.style.display =
-        "block";
-
-    progressBar.style.width =
-        "0%";
-
-}
+let value =
+this.value.trim();
 
 
-function setProgress(
-    percent,
-    title,
-    small
+if(
+value.toUpperCase() ===
+"TRANSPARENT"
 ){
 
-    progressBar.style.width =
-        percent + "%";
+drawPreview();
 
-    statusTitle.textContent =
-        title;
-
-    statusSmall.textContent =
-        small;
+return;
 
 }
+
+
+if(
+!/^#[0-9A-Fa-f]{6}$/.test(value)
+){
+
+return;
+
+}
+
+
+colorPicker.value =
+value;
+
+drawPreview();
+
+}
+);
+
+
+/* --------------------------------
+   PRESET COLORS
+-------------------------------- */
+
+document
+.querySelectorAll(
+".color-btn"
+)
+.forEach(
+button => {
+
+button.addEventListener(
+"click",
+function(){
+
+setColor(
+this.dataset.color
+);
+
+});
+
+}
+);
+
+
+/* --------------------------------
+   DRAW PREVIEW
+-------------------------------- */
+
+function drawPreview(){
+
+if(!transparentImage){
+return;
+}
+
+
+const img =
+new Image();
+
+img.onload =
+function(){
+
+canvas.width =
+img.naturalWidth;
+
+canvas.height =
+img.naturalHeight;
+
+
+/* Background */
+
+if(
+hexInput.value.toUpperCase() !==
+"TRANSPARENT"
+){
+
+ctx.fillStyle =
+colorPicker.value;
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}else{
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}
+
+
+/* Foreground */
+
+ctx.drawImage(
+img,
+0,
+0
+);
+
+};
+
+img.src =
+URL.createObjectURL(
+transparentImage
+);
+
+}
+
+
+/* --------------------------------
+   QUALITY
+-------------------------------- */
+
+qualitySlider.addEventListener(
+"input",
+function(){
+
+qualityValue.textContent =
+this.value+"%";
+
+}
+);
+
+
+/* --------------------------------
+   DOWNLOAD
+-------------------------------- */
+
+downloadBtn.addEventListener(
+"click",
+function(){
+
+if(!transparentImage){
+
+alert(
+"Please upload and process a photo first."
+);
+
+return;
+
+}
+
+
+const format =
+formatSelect.value;
+
+
+let mime =
+"image/png";
+
+let extension =
+"png";
+
+
+if(format === "jpeg"){
+
+mime =
+"image/jpeg";
+
+extension =
+"jpg";
+
+}
+
+
+const quality =
+Number(
+qualitySlider.value
+) / 100;
+
+
+canvas.toBlob(
+function(blob){
+
+const url =
+URL.createObjectURL(
+blob
+);
+
+const link =
+document.createElement("a");
+
+link.href =
+url;
+
+link.download =
+"premanjali-photo-bg."+extension;
+
+document.body.appendChild(
+link
+);
+
+link.click();
+
+link.remove();
+
+setTimeout(
+()=>{
+URL.revokeObjectURL(url);
+},
+1000
+);
+
+},
+mime,
+quality
+);
+
+});
 
 
 /* --------------------------------
@@ -1175,54 +1644,34 @@ function setProgress(
 -------------------------------- */
 
 newPhotoBtn.addEventListener(
-    "click",
-    function(){
+"click",
+function(){
 
-        if(resultURL){
+transparentImage =
+null;
 
-            URL.revokeObjectURL(
-                resultURL
-            );
+fileInput.value =
+"";
 
-            resultURL = null;
+editor.style.display =
+"none";
 
-        }
+status.style.display =
+"none";
 
-
-        if(originalURL){
-
-            URL.revokeObjectURL(
-                originalURL
-            );
-
-            originalURL = null;
-
-        }
-
-
-        fileInput.value = "";
-
-        originalImage.src =
-            "";
-
-        resultImage.src =
-            "";
-
-        downloadBtn.removeAttribute(
-            "href"
-        );
-
-        results.style.display =
-            "none";
-
-
-        window.scrollTo({
-            top:300,
-            behavior:"smooth"
-        });
-
-    }
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
 );
+
+window.scrollTo({
+top:300,
+behavior:"smooth"
+});
+
+});
 
 </script>
 
