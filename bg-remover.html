@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Background Remover - Premanjali Online Corner</title>
+<title>Fast Background Remover - Premanjali Online Corner</title>
 
 <meta name="description"
-content="Remove photo backgrounds online for free with Premanjali Online Corner. Upload your photo and download a transparent PNG.">
+content="Fast online photo background remover by Premanjali Online Corner. Remove image backgrounds and download transparent PNG files.">
 
 <style>
 :root{
@@ -15,7 +15,7 @@ content="Remove photo backgrounds online for free with Premanjali Online Corner.
     --primary-dark:#084b3f;
     --secondary:#f7b801;
     --bg:#07be91;
-    --card:#ffffff;
+    --card:#fff;
     --text:#1f2937;
     --muted:#6b7280;
     --border:#dfe7e5;
@@ -35,18 +35,18 @@ body{
     line-height:1.6;
 }
 
+.container{
+    width:92%;
+    max-width:1150px;
+    margin:auto;
+}
+
 /* TOP BAR */
 .topbar{
     background:var(--primary-dark);
     color:#fff;
     padding:9px 0;
     font-size:14px;
-}
-
-.container{
-    width:92%;
-    max-width:1150px;
-    margin:auto;
 }
 
 .topbar-content{
@@ -93,7 +93,7 @@ header{
 .menu{
     display:flex;
     align-items:center;
-    gap:7px;
+    gap:6px;
     flex-wrap:wrap;
 }
 
@@ -101,7 +101,7 @@ header{
     text-decoration:none;
     color:var(--text);
     font-weight:600;
-    padding:9px 12px;
+    padding:9px 11px;
     border-radius:7px;
 }
 
@@ -113,43 +113,44 @@ header{
 
 /* HERO */
 .hero{
-    background:linear-gradient(135deg,var(--primary),#0a8f68);
-    color:#fff;
+    background:linear-gradient(135deg,var(--primary),#0a9169);
+    color:white;
     text-align:center;
-    padding:55px 20px;
+    padding:48px 20px;
 }
 
 .hero h1{
-    font-size:clamp(30px,5vw,48px);
-    margin-bottom:10px;
+    font-size:clamp(30px,5vw,46px);
+    margin-bottom:8px;
 }
 
 .hero p{
     max-width:700px;
     margin:auto;
     font-size:17px;
-    opacity:.95;
 }
 
 /* TOOL */
 .tool-section{
-    padding:45px 0 65px;
+    padding:40px 0 60px;
 }
 
 .tool-card{
-    background:#fff;
     max-width:850px;
     margin:auto;
-    padding:30px;
+    background:#fff;
+    padding:28px;
     border-radius:18px;
-    box-shadow:var(--shadow);
     border:1px solid var(--border);
+    box-shadow:var(--shadow);
 }
 
+/* UPLOAD */
 .upload-box{
+    display:block;
     border:2px dashed var(--primary);
     border-radius:15px;
-    padding:45px 20px;
+    padding:42px 20px;
     text-align:center;
     background:#f8fffc;
     cursor:pointer;
@@ -158,32 +159,29 @@ header{
 
 .upload-box:hover{
     background:#effcf7;
-    transform:translateY(-2px);
 }
 
 .upload-icon{
-    font-size:52px;
-    margin-bottom:10px;
+    font-size:50px;
 }
 
 .upload-box h2{
     color:var(--primary);
-    margin-bottom:5px;
+    margin:5px 0;
 }
 
 .upload-box p{
     color:var(--muted);
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
 .upload-btn{
     display:inline-block;
     background:var(--secondary);
     color:#222;
-    font-weight:700;
-    padding:12px 24px;
+    padding:12px 25px;
     border-radius:8px;
-    cursor:pointer;
+    font-weight:bold;
 }
 
 #fileInput{
@@ -193,27 +191,55 @@ header{
 /* STATUS */
 .status{
     display:none;
-    text-align:center;
     margin-top:25px;
-    padding:15px;
-    background:#effaf6;
-    border-radius:10px;
-    color:var(--primary-dark);
-    font-weight:600;
+    text-align:center;
+    background:#f0faf7;
+    border-radius:12px;
+    padding:20px;
 }
 
 .loader{
-    width:35px;
-    height:35px;
-    border:4px solid #d8eee7;
+    width:38px;
+    height:38px;
+    border:4px solid #d9eee8;
     border-top-color:var(--primary);
     border-radius:50%;
-    animation:spin 1s linear infinite;
-    margin:0 auto 10px;
+    animation:spin .8s linear infinite;
+    margin:0 auto 12px;
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg);}
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.status-title{
+    color:var(--primary-dark);
+    font-weight:bold;
+}
+
+.status-small{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:4px;
+}
+
+/* PROGRESS */
+.progress-wrap{
+    width:100%;
+    height:9px;
+    background:#dfeee9;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:var(--primary);
+    transition:width .3s ease;
 }
 
 /* RESULTS */
@@ -236,64 +262,68 @@ header{
 
 .preview{
     border:1px solid var(--border);
-    border-radius:12px;
     padding:12px;
-    background:#fff;
+    border-radius:12px;
 }
 
 .preview h3{
-    margin-bottom:10px;
     text-align:center;
     color:var(--primary-dark);
+    margin-bottom:10px;
 }
 
 .preview img{
-    display:block;
     width:100%;
     max-height:400px;
     object-fit:contain;
+    display:block;
     border-radius:8px;
+
     background:
-        linear-gradient(45deg,#eee 25%,transparent 25%),
-        linear-gradient(-45deg,#eee 25%,transparent 25%),
-        linear-gradient(45deg,transparent 75%,#eee 75%),
-        linear-gradient(-45deg,transparent 75%,#eee 75%);
+    linear-gradient(45deg,#eee 25%,transparent 25%),
+    linear-gradient(-45deg,#eee 25%,transparent 25%),
+    linear-gradient(45deg,transparent 75%,#eee 75%),
+    linear-gradient(-45deg,transparent 75%,#eee 75%);
+
     background-size:20px 20px;
-    background-position:0 0,0 10px,10px -10px,-10px 0;
+    background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
 }
 
-.action-buttons{
-    text-align:center;
-    margin-top:25px;
+.buttons{
     display:flex;
     justify-content:center;
     gap:12px;
     flex-wrap:wrap;
+    margin-top:25px;
 }
 
 .btn{
     border:none;
-    text-decoration:none;
-    padding:12px 22px;
+    padding:12px 23px;
     border-radius:8px;
-    font-weight:700;
+    font-weight:bold;
     cursor:pointer;
+    text-decoration:none;
     font-size:15px;
 }
 
-.download-btn{
+.download{
     background:var(--primary);
     color:#fff;
 }
 
-.new-btn{
+.new-photo{
     background:var(--secondary);
     color:#222;
 }
 
 /* INFO */
 .info-section{
-    padding:0 0 60px;
+    padding-bottom:60px;
 }
 
 .info-grid{
@@ -304,20 +334,19 @@ header{
 
 .info-card{
     background:#fff;
-    padding:25px;
+    padding:24px;
     border-radius:14px;
     box-shadow:var(--shadow);
     text-align:center;
 }
 
-.info-card .icon{
-    font-size:35px;
-    margin-bottom:8px;
+.info-icon{
+    font-size:34px;
 }
 
 .info-card h3{
     color:var(--primary);
-    margin-bottom:7px;
+    margin:5px 0;
 }
 
 /* FOOTER */
@@ -325,7 +354,6 @@ footer{
     background:var(--primary-dark);
     color:#fff;
     padding:35px 0 20px;
-    margin-top:20px;
 }
 
 .footer-grid{
@@ -343,9 +371,9 @@ footer p{
 }
 
 footer a{
+    display:block;
     color:#fff;
     text-decoration:none;
-    display:block;
     margin:5px 0;
 }
 
@@ -354,12 +382,13 @@ footer a{
     margin-top:25px;
     padding-top:15px;
     text-align:center;
-    font-size:14px;
     color:#cce5df;
+    font-size:14px;
 }
 
 /* MOBILE */
 @media(max-width:800px){
+
     .nav{
         flex-direction:column;
         padding:14px 0;
@@ -367,11 +396,6 @@ footer a{
 
     .menu{
         justify-content:center;
-    }
-
-    .menu a{
-        font-size:14px;
-        padding:7px 9px;
     }
 
     .preview-grid{
@@ -388,13 +412,14 @@ footer a{
 }
 
 @media(max-width:500px){
+
     .topbar-content{
         justify-content:center;
         text-align:center;
     }
 
     .tool-card{
-        padding:18px;
+        padding:17px;
     }
 
     .upload-box{
@@ -402,7 +427,7 @@ footer a{
     }
 
     .hero{
-        padding:40px 15px;
+        padding:38px 15px;
     }
 }
 </style>
@@ -413,6 +438,7 @@ footer a{
 <!-- TOP BAR -->
 <div class="topbar">
     <div class="container topbar-content">
+
         <div>
             📞 Call us: +91 6001246406
             &nbsp; | &nbsp;
@@ -424,295 +450,779 @@ footer a{
             &nbsp; | &nbsp;
             <a href="#">WhatsApp</a>
         </div>
+
     </div>
 </div>
 
+
 <!-- NAVIGATION -->
 <header>
-    <div class="container nav">
 
-        <a href="index.html" class="logo">
-            Premanjali <span>Online Corner</span>
+<div class="container nav">
+
+    <a href="index.html" class="logo">
+        Premanjali <span>Online Corner</span>
+    </a>
+
+    <nav class="menu">
+
+        <a href="index.html">Home</a>
+
+        <a href="services.html">
+            Services
         </a>
 
-        <nav class="menu">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="notice.html">Notice</a>
-            <a href="content.html">Content</a>
-            <a href="bg-remover.html" class="active">BG Remover</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <a href="notice.html">
+            Notice
+        </a>
 
-    </div>
+        <a href="content.html">
+            Content
+        </a>
+
+        <a href="bg-remover.html" class="active">
+            BG Remover
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</div>
+
 </header>
+
 
 <!-- HERO -->
 <section class="hero">
-    <div class="container">
-        <h1>🪄 Photo Background Remover</h1>
-        <p>
-            Remove the background from your photo online and download
-            a clean transparent PNG.
-        </p>
-    </div>
+
+<div class="container">
+
+    <h1>
+        🪄 Fast Photo Background Remover
+    </h1>
+
+    <p>
+        Upload your photo, remove the background and download
+        your transparent PNG.
+    </p>
+
+</div>
+
 </section>
+
 
 <!-- TOOL -->
 <section class="tool-section">
-    <div class="container">
 
-        <div class="tool-card">
+<div class="container">
 
-            <label class="upload-box" for="fileInput">
+<div class="tool-card">
 
-                <div class="upload-icon">📷</div>
+    <!-- UPLOAD -->
 
-                <h2>Upload Your Photo</h2>
+    <label class="upload-box" for="fileInput">
 
-                <p>
-                    Select JPG, JPEG or PNG image from your device
-                </p>
+        <div class="upload-icon">
+            📷
+        </div>
 
-                <span class="upload-btn">
-                    Choose Photo
-                </span>
+        <h2>
+            Upload Your Photo
+        </h2>
 
-            </label>
+        <p>
+            JPG, JPEG or PNG • Large photos are automatically optimized
+        </p>
 
-            <input
-                type="file"
-                id="fileInput"
-                accept="image/png,image/jpeg,image/jpg"
+        <span class="upload-btn">
+            Choose Photo
+        </span>
+
+    </label>
+
+    <input
+        type="file"
+        id="fileInput"
+        accept="image/jpeg,image/png,image/jpg"
+    >
+
+
+    <!-- STATUS -->
+
+    <div class="status" id="status">
+
+        <div class="loader"></div>
+
+        <div class="status-title" id="statusTitle">
+            Preparing image...
+        </div>
+
+        <div class="status-small" id="statusSmall">
+            Please wait.
+        </div>
+
+        <div class="progress-wrap">
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div class="results" id="results">
+
+        <h2>
+            ✨ Background Removed
+        </h2>
+
+        <div class="preview-grid">
+
+            <div class="preview">
+
+                <h3>
+                    Original
+                </h3>
+
+                <img
+                    id="originalImage"
+                    alt="Original photo"
+                >
+
+            </div>
+
+
+            <div class="preview">
+
+                <h3>
+                    Result
+                </h3>
+
+                <img
+                    id="resultImage"
+                    alt="Background removed photo"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <a
+                id="downloadBtn"
+                class="btn download"
+                download="premanjali-background-removed.png"
             >
+                ⬇️ Download PNG
+            </a>
 
-            <!-- STATUS -->
-            <div class="status" id="status">
-                <div class="loader"></div>
-                <div id="statusText">
-                    Removing background... Please wait.
-                </div>
-            </div>
-
-            <!-- RESULT -->
-            <div class="results" id="results">
-
-                <h2>✨ Your Result</h2>
-
-                <div class="preview-grid">
-
-                    <div class="preview">
-                        <h3>Original Photo</h3>
-                        <img id="originalImage" alt="Original photo">
-                    </div>
-
-                    <div class="preview">
-                        <h3>Background Removed</h3>
-                        <img id="resultImage" alt="Background removed photo">
-                    </div>
-
-                </div>
-
-                <div class="action-buttons">
-
-                    <a
-                        id="downloadBtn"
-                        class="btn download-btn"
-                        download="premanjali-bg-removed.png"
-                    >
-                        ⬇️ Download PNG
-                    </a>
-
-                    <button
-                        class="btn new-btn"
-                        onclick="resetTool()"
-                    >
-                        🔄 Remove Another
-                    </button>
-
-                </div>
-
-            </div>
+            <button
+                class="btn new-photo"
+                id="newPhotoBtn"
+            >
+                🔄 New Photo
+            </button>
 
         </div>
 
     </div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- INFORMATION -->
+
+<!-- FEATURES -->
+
 <section class="info-section">
-    <div class="container">
 
-        <div class="info-grid">
+<div class="container">
 
-            <div class="info-card">
-                <div class="icon">⚡</div>
-                <h3>Easy to Use</h3>
-                <p>
-                    Upload your photo and let the tool automatically
-                    remove the background.
-                </p>
-            </div>
+<div class="info-grid">
 
-            <div class="info-card">
-                <div class="icon">🖼️</div>
-                <h3>Transparent PNG</h3>
-                <p>
-                    Download your finished photo as a transparent PNG
-                    image.
-                </p>
-            </div>
+    <div class="info-card">
 
-            <div class="info-card">
-                <div class="icon">🔒</div>
-                <h3>Privacy Friendly</h3>
-                <p>
-                    Image processing is performed in your browser
-                    whenever supported by the tool.
-                </p>
-            </div>
-
+        <div class="info-icon">
+            ⚡
         </div>
 
+        <h3>
+            Optimized
+        </h3>
+
+        <p>
+            Large photos are resized before processing
+            to reduce processing time.
+        </p>
+
     </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🖼️
+        </div>
+
+        <h3>
+            Transparent PNG
+        </h3>
+
+        <p>
+            Download the finished image with a transparent
+            background.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🔒
+        </div>
+
+        <h3>
+            Privacy Friendly
+        </h3>
+
+        <p>
+            The image processing happens in your browser
+            after the required model is loaded.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <!-- FOOTER -->
+
 <footer>
 
-    <div class="container">
+<div class="container">
 
-        <div class="footer-grid">
+<div class="footer-grid">
 
-            <div>
-                <h3>Premanjali Online Corner</h3>
-                <p>
-                    Online services, digital assistance, printing,
-                    government applications and useful online tools.
-                </p>
-            </div>
+    <div>
 
-            <div>
-                <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="notice.html">Notice</a>
-                <a href="content.html">Content</a>
-            </div>
+        <h3>
+            Premanjali Online Corner
+        </h3>
 
-            <div>
-                <h3>Useful Pages</h3>
-                <a href="bg-remover.html">BG Remover</a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact</a>
-                <a href="privacy.html">Privacy Policy</a>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            © 2026 Premanjali Online Corner. All Rights Reserved.
-        </div>
+        <p>
+            Online services, digital assistance, printing,
+            government applications and useful online tools.
+        </p>
 
     </div>
+
+
+    <div>
+
+        <h3>
+            Quick Links
+        </h3>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="notice.html">
+            Notice
+        </a>
+
+        <a href="content.html">
+            Content
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <h3>
+            Useful Pages
+        </h3>
+
+        <a href="bg-remover.html">
+            BG Remover
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="copyright">
+
+    © 2026 Premanjali Online Corner.
+    All Rights Reserved.
+
+</div>
+
+</div>
 
 </footer>
 
-<!-- BACKGROUND REMOVAL LIBRARY -->
+
+<!-- FAST BACKGROUND REMOVER -->
+
 <script type="module">
 
-import { removeBackground } from
-"https://cdn.jsdelivr.net/npm/@imgly/background-removal/+esm";
+import {
+    removeBackground
+} from "https://cdn.jsdelivr.net/npm/@imgly/background-removal/+esm";
 
-const fileInput = document.getElementById("fileInput");
-const status = document.getElementById("status");
-const statusText = document.getElementById("statusText");
-const results = document.getElementById("results");
 
-const originalImage = document.getElementById("originalImage");
-const resultImage = document.getElementById("resultImage");
-const downloadBtn = document.getElementById("downloadBtn");
+const fileInput =
+    document.getElementById("fileInput");
+
+const status =
+    document.getElementById("status");
+
+const statusTitle =
+    document.getElementById("statusTitle");
+
+const statusSmall =
+    document.getElementById("statusSmall");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const results =
+    document.getElementById("results");
+
+const originalImage =
+    document.getElementById("originalImage");
+
+const resultImage =
+    document.getElementById("resultImage");
+
+const downloadBtn =
+    document.getElementById("downloadBtn");
+
+const newPhotoBtn =
+    document.getElementById("newPhotoBtn");
+
 
 let resultURL = null;
+let originalURL = null;
 
-fileInput.addEventListener("change", async function(){
 
-    const file = this.files[0];
+/* --------------------------------
+   RESIZE IMAGE
+-------------------------------- */
 
-    if(!file){
-        return;
+async function optimizeImage(file){
+
+    const MAX_SIZE = 1600;
+
+    const bitmap =
+        await createImageBitmap(file);
+
+    let width =
+        bitmap.width;
+
+    let height =
+        bitmap.height;
+
+
+    if(
+        width <= MAX_SIZE &&
+        height <= MAX_SIZE
+    ){
+
+        return file;
+
     }
 
-    if(!file.type.startsWith("image/")){
-        alert("Please select a valid image.");
-        return;
-    }
 
-    const originalURL = URL.createObjectURL(file);
-
-    originalImage.src = originalURL;
-
-    results.style.display = "none";
-    status.style.display = "block";
-
-    statusText.textContent =
-        "Loading background removal model... Please wait.";
-
-    try{
-
-        statusText.textContent =
-            "Removing background... This may take a little time.";
-
-        const blob = await removeBackground(file);
-
-        if(resultURL){
-            URL.revokeObjectURL(resultURL);
-        }
-
-        resultURL = URL.createObjectURL(blob);
-
-        resultImage.src = resultURL;
-
-        downloadBtn.href = resultURL;
-
-        results.style.display = "block";
-        status.style.display = "none";
-
-    }catch(error){
-
-        console.error(error);
-
-        status.style.display = "none";
-
-        alert(
-            "Background removal failed. Please try another image or check your internet connection."
+    const ratio =
+        Math.min(
+            MAX_SIZE / width,
+            MAX_SIZE / height
         );
 
+
+    width =
+        Math.round(width * ratio);
+
+    height =
+        Math.round(height * ratio);
+
+
+    const canvas =
+        document.createElement("canvas");
+
+    canvas.width =
+        width;
+
+    canvas.height =
+        height;
+
+
+    const ctx =
+        canvas.getContext("2d", {
+            alpha:true
+        });
+
+
+    ctx.drawImage(
+        bitmap,
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    return new Promise(
+        resolve => {
+
+            canvas.toBlob(
+                blob => {
+
+                    resolve(
+                        new File(
+                            [blob],
+                            "optimized-image.jpg",
+                            {
+                                type:"image/jpeg",
+                                lastModified:
+                                    Date.now()
+                            }
+                        )
+                    );
+
+                },
+                "image/jpeg",
+                0.88
+            );
+
+        }
+    );
+
+}
+
+
+/* --------------------------------
+   FILE UPLOAD
+-------------------------------- */
+
+fileInput.addEventListener(
+    "change",
+    async function(){
+
+        const file =
+            this.files[0];
+
+        if(!file){
+            return;
+        }
+
+
+        if(!file.type.startsWith("image/")){
+
+            alert(
+                "Please select a valid JPG or PNG image."
+            );
+
+            return;
+
+        }
+
+
+        /* Maximum upload size */
+
+        if(file.size > 15 * 1024 * 1024){
+
+            alert(
+                "Please select an image smaller than 15 MB."
+            );
+
+            fileInput.value = "";
+
+            return;
+
+        }
+
+
+        try{
+
+            startLoading();
+
+
+            /* Show original */
+
+            if(originalURL){
+
+                URL.revokeObjectURL(
+                    originalURL
+                );
+
+            }
+
+            originalURL =
+                URL.createObjectURL(file);
+
+            originalImage.src =
+                originalURL;
+
+
+            setProgress(
+                10,
+                "Optimizing image...",
+                "Large photos are automatically resized."
+            );
+
+
+            /* Resize */
+
+            const optimizedFile =
+                await optimizeImage(file);
+
+
+            setProgress(
+                25,
+                "Starting AI background removal...",
+                "The first run may take longer."
+            );
+
+
+            /* Background removal */
+
+            const blob =
+                await removeBackground(
+                    optimizedFile,
+                    {
+
+                        progress:
+                        (key,current,total) => {
+
+                            if(total > 0){
+
+                                const aiProgress =
+                                    current / total;
+
+                                const percent =
+                                    25 +
+                                    Math.round(
+                                        aiProgress * 70
+                                    );
+
+                                setProgress(
+                                    percent,
+                                    "Removing background...",
+                                    "AI processing: " +
+                                    percent +
+                                    "%"
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+
+            /* Result */
+
+            if(resultURL){
+
+                URL.revokeObjectURL(
+                    resultURL
+                );
+
+            }
+
+
+            resultURL =
+                URL.createObjectURL(blob);
+
+
+            resultImage.src =
+                resultURL;
+
+
+            downloadBtn.href =
+                resultURL;
+
+
+            setProgress(
+                100,
+                "Completed!",
+                "Your background has been removed."
+            );
+
+
+            setTimeout(
+                () => {
+
+                    status.style.display =
+                        "none";
+
+                    results.style.display =
+                        "block";
+
+                    results.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                },
+                500
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "Background removal error:",
+                error
+            );
+
+
+            status.style.display =
+                "none";
+
+
+            alert(
+                "Background removal failed. Please try again with another photo."
+            );
+
+        }
+
     }
+);
 
-});
 
-window.resetTool = function(){
+/* --------------------------------
+   LOADING UI
+-------------------------------- */
 
-    if(resultURL){
-        URL.revokeObjectURL(resultURL);
-        resultURL = null;
+function startLoading(){
+
+    results.style.display =
+        "none";
+
+    status.style.display =
+        "block";
+
+    progressBar.style.width =
+        "0%";
+
+}
+
+
+function setProgress(
+    percent,
+    title,
+    small
+){
+
+    progressBar.style.width =
+        percent + "%";
+
+    statusTitle.textContent =
+        title;
+
+    statusSmall.textContent =
+        small;
+
+}
+
+
+/* --------------------------------
+   NEW PHOTO
+-------------------------------- */
+
+newPhotoBtn.addEventListener(
+    "click",
+    function(){
+
+        if(resultURL){
+
+            URL.revokeObjectURL(
+                resultURL
+            );
+
+            resultURL = null;
+
+        }
+
+
+        if(originalURL){
+
+            URL.revokeObjectURL(
+                originalURL
+            );
+
+            originalURL = null;
+
+        }
+
+
+        fileInput.value = "";
+
+        originalImage.src =
+            "";
+
+        resultImage.src =
+            "";
+
+        downloadBtn.removeAttribute(
+            "href"
+        );
+
+        results.style.display =
+            "none";
+
+
+        window.scrollTo({
+            top:300,
+            behavior:"smooth"
+        });
+
     }
-
-    fileInput.value = "";
-
-    originalImage.src = "";
-    resultImage.src = "";
-
-    results.style.display = "none";
-    status.style.display = "none";
-
-    window.scrollTo({
-        top:300,
-        behavior:"smooth"
-    });
-};
+);
 
 </script>
 
